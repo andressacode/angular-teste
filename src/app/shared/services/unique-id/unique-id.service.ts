@@ -6,13 +6,17 @@ export class UniqueIdService {
 
   private numberOfGeneratedIds = 0;
 
-  public generateUniqueIdWithPrefix(prefix: string){
+  public generateUniqueIdWithPrefix(prefix: any): string{
     if(!prefix){
       throw Error ('Prefix can not be empty!');
     }
     const uniqueId = this.generateUniqueId();
     this.numberOfGeneratedIds++;
     return `${prefix}-${uniqueId}`;
+  }
+
+  public getNumberOfGeneratedIds(): number {
+    return this.numberOfGeneratedIds;
   }
 
   public generateUniqueId() : string{
