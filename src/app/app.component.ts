@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tests-one';
+  public likes = 0;
+
+  public like(): void {
+    this.likes++;
+  }
 }
