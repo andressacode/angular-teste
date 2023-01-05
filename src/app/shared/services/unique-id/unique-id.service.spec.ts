@@ -29,12 +29,14 @@ describe(UniqueIdService.name, () => {
 
   it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name}
   should throw when called with empty`, () => {
-    const emptyValues = [null, undefined, '']
+    const emptyValues = [null, undefined, '', '0', '1'];
     // quando testo um método e quero saber se ele lança uma exceção ou não,
       // eu devo chamar essse método dentro de uma função.
 
       emptyValues.forEach(emptyValue => {
-        expect(() => service.generateUniqueIdWithPrefix(emptyValue)).toThrow();
+        expect(() => service.generateUniqueIdWithPrefix(emptyValue))
+        .withContext(`Empty value: ${emptyValue}`)
+        .toThrow();
       })
   })
 })
